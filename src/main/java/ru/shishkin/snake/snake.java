@@ -1,4 +1,4 @@
-package snake;
+package ru.shishkin.snake;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,10 +37,10 @@ class myPanel extends JPanel
 	
 	private class myKey implements KeyListener  
 	{
-		    // Метод, который срабатывает при нажатии
+		    // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	   	    public void keyPressed(KeyEvent e)
 	   	    {
-	   	    	// Получение кода нажатой клавиши
+	   	    	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	   	    	int key_ = e.getKeyCode();
 	   	    	if (key_==KeyEvent.VK_KP_LEFT) myGame.new_napr = 0;
 	   	    	if (key_==KeyEvent.VK_KP_RIGHT) myGame.new_napr = 2;

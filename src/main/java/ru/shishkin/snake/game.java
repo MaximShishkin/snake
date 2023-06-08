@@ -1,4 +1,4 @@
-package snake;
+package ru.shishkin.snake;
 
 public class game {
 	int[][] mas;
