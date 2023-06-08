@@ -1,6 +1,6 @@
 package ru.shishkin.snake;
 
-public class game {
+public class Game {
 	int[][] mas;
 	int napr;
 	int gX, gY;
@@ -9,7 +9,7 @@ public class game {
 	int dlina;
 	boolean endg;
 	
-	public game()
+	public Game()
 	{
 		mas = new int[30][30];
 		
