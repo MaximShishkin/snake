@@ -36,7 +36,6 @@ public class Game {
             }
         }
 
-
         napr = 0;
         kol = 0;
         mas[14][14] = 1;
@@ -46,27 +45,22 @@ public class Game {
         dlina = 3;
         endg = false;
         make_new();
-
     }
 
     int peremGoloa() {
-        if (napr == 0) //left
-        {
+        if (napr == 0) { //left
             if ((gX - 1) >= 0) gX--;
             else gX = 29;
         }
-        if (napr == 1) //up
-        {
+        if (napr == 1) { //up
             if ((gX - 1) >= 0) gY--;
             else gY = 29;
         }
-        if (napr == 2) //right
-        {
+        if (napr == 2) { //right
             if ((gX - 1) >= 0) gX++;
             else gX = 0;
         }
-        if (napr == 3) //down
-        {
+        if (napr == 3) { //down
             if ((gX - 1) >= 0) gY--;
             else gY = 0;
         }
@@ -103,8 +97,7 @@ public class Game {
             make_new();
             kol += 10;
         }
+
         povorot();
-
     }
-
 }

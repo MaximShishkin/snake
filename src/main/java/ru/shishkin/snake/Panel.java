@@ -19,11 +19,11 @@ public class Panel extends JPanel {
 
     private class myKey implements KeyListener {
         public void keyPressed(KeyEvent e) {
-            int key_ = e.getKeyCode();
-            if (key_ == KeyEvent.VK_KP_LEFT) myGame.new_napr = 0;
-            if (key_ == KeyEvent.VK_KP_RIGHT) myGame.new_napr = 2;
-            if (key_ == KeyEvent.VK_KP_UP) myGame.new_napr = 1;
-            if (key_ == KeyEvent.VK_KP_DOWN) myGame.new_napr = 3;
+            int keyCode = e.getKeyCode();
+            if (keyCode == KeyEvent.VK_KP_LEFT) myGame.new_napr = 0;
+            if (keyCode == KeyEvent.VK_KP_RIGHT) myGame.new_napr = 2;
+            if (keyCode == KeyEvent.VK_KP_UP) myGame.new_napr = 1;
+            if (keyCode == KeyEvent.VK_KP_DOWN) myGame.new_napr = 3;
         }
 
         public void keyReleased(KeyEvent e) {
@@ -40,11 +40,11 @@ public class Panel extends JPanel {
 
         myGame = new Game();
         try {
-            fon = ImageIO.read(new File("./fon.png"));
-            telo = ImageIO.read(new File("./telo.png"));
-            golova = ImageIO.read(new File("./golova.png"));
-            ob = ImageIO.read(new File("./ob.png"));
-            endg = ImageIO.read(new File("./endg.png"));
+            fon = ImageIO.read(getClass().getClassLoader().getResource("fon.png"));
+            telo = ImageIO.read(getClass().getClassLoader().getResource("telo.png"));
+            golova = ImageIO.read(getClass().getClassLoader().getResource("golova.png"));
+            ob = ImageIO.read(getClass().getClassLoader().getResource("ob.png"));
+            endg = ImageIO.read(getClass().getClassLoader().getResource("endg.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -106,12 +106,9 @@ public class Panel extends JPanel {
 
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 30; j++) {
-                if (myGame.mas[i][j] == 1)
-                    gr.drawImage(golova, 10 + j * 20, 10 + i * 20, null);
-                if (myGame.mas[i][j] == -1)
-                    gr.drawImage(ob, 10 + j * 20, 10 + i * 20, null);
-                if (myGame.mas[i][j] >= 2)
-                    gr.drawImage(telo, 10 + j * 20, 10 + i * 20, null);
+                if (myGame.mas[i][j] == 1) gr.drawImage(golova, 10 + j * 20, 10 + i * 20, null);
+                if (myGame.mas[i][j] == -1) gr.drawImage(ob, 10 + j * 20, 10 + i * 20, null);
+                if (myGame.mas[i][j] >= 2) gr.drawImage(telo, 10 + j * 20, 10 + i * 20, null);
                 gr.setColor(Color.ORANGE);
                 gr.setFont(new Font("arial", 0, 22));
                 gr.drawString("" + myGame.mas[i][j], 12 + j * 20, 30 + i * 20);
