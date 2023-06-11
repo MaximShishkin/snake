@@ -7,15 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 
 public class Panel extends JPanel {
     private Game myGame;
-    private Timer tmDrow, tmUpdate;
     private Image fon, telo, golova, ob, endg;
     private JLabel lb;
-    private JButton btn1, btn2;
-    private Panel pan;
 
     private class myKey implements KeyListener {
         public void keyPressed(KeyEvent e) {
@@ -34,11 +30,11 @@ public class Panel extends JPanel {
     }
 
     public Panel() {
-        pan = this;
         addKeyListener(new myKey());
         setFocusable(true);
 
         myGame = new Game();
+
         try {
             fon = ImageIO.read(getClass().getClassLoader().getResource("fon.png"));
             telo = ImageIO.read(getClass().getClassLoader().getResource("telo.png"));
@@ -49,14 +45,14 @@ public class Panel extends JPanel {
             e.printStackTrace();
         }
 
-        tmDrow = new Timer(20, new ActionListener() {
+        Timer tmDrow = new Timer(20, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 repaint();
             }
         });
         tmDrow.start();
 
-        tmUpdate = new Timer(20, new ActionListener() {
+        Timer tmUpdate = new Timer(20, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (myGame.endg == false) {
                     myGame.perem();
@@ -74,22 +70,20 @@ public class Panel extends JPanel {
         lb.setBounds(630, 200, 150, 50);
         add(lb);
 
-        btn1 = new JButton();
+        JButton btn1 = new JButton();
         btn1.setText("NEW GAME");
         btn1.setForeground(Color.BLUE);
         btn1.setBounds(630, 30, 150, 50);
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                myGame = new Game();
                 myGame.start();
                 btn1.setFocusable(false);
-                btn2.setFocusable(false);
-                pan.setFocusable(true);
+                setFocusable(true);
             }
         });
         add(btn1);
 
-        btn2 = new JButton();
+        JButton btn2 = new JButton();
         btn2.setText("EXIT");
         btn2.setForeground(Color.RED);
         btn2.setBounds(630, 100, 150, 50);
@@ -123,6 +117,8 @@ public class Panel extends JPanel {
             gr.drawLine(10, 10 + i * 20, 610, 10 + i * 20);
         }
 
-        if (myGame.endg == true) gr.drawImage(endg, 250, 200, 200, 100, null);
+        if (myGame.endg == true) {
+            gr.drawImage(endg, 250, 200, 200, 100, null);
+        }
     }
 }

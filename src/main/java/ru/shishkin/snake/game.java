@@ -3,6 +3,7 @@ package ru.shishkin.snake;
 public class Game {
     private int gX, gY;
     private int dlina;
+
     boolean endg;
     int score;
     int new_napr;
@@ -38,29 +39,35 @@ public class Game {
 
         napr = 0;
         score = 0;
+
         mas[14][14] = 1;
         mas[14][15] = 2;
         mas[14][16] = 3;
 
         dlina = 3;
         endg = false;
+
         make_new();
     }
 
     private int peremGolova() {
-        if (napr == 0) { //left
+        // left
+        if (napr == 0) {
             if ((gX - 1) >= 0) gX--;
             else gX = 29;
         }
-        if (napr == 1) { //up
+        // up
+        if (napr == 1) {
             if ((gX - 1) >= 0) gY--;
             else gY = 29;
         }
-        if (napr == 2) { //right
+        // right
+        if (napr == 2) {
             if ((gX - 1) >= 0) gX++;
             else gX = 0;
         }
-        if (napr == 3) { //down
+        // down
+        if (napr == 3) {
             if ((gX - 1) >= 0) gY--;
             else gY = 0;
         }
@@ -82,7 +89,6 @@ public class Game {
 
     void perem() {
         int flag = peremGolova();
-
         if (flag == 3) endg = true;
 
         for (int i = 0; i < 30; i++) {

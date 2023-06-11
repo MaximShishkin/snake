@@ -1,13 +1,11 @@
 package ru.shishkin.snake;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Frame extends JFrame {
     public Frame() {
-        Panel p = new Panel();
-        Container cont = getContentPane();
-        cont.add(p);
+        Panel panel = new Panel();
+        add(panel);
         setTitle("Snake");
         setBounds(0, 0, 800, 660);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
