@@ -10,20 +10,20 @@ import java.awt.event.KeyListener;
 import java.io.File;
 
 public class Panel extends JPanel {
-    Game myGame;
-    Timer tmDrow, tmUpdate;
-    Image fon, telo, golova, ob, endg;
-    JLabel lb;
-    JButton btn1, btn2;
-    Panel pan;
+    private Game myGame;
+    private Timer tmDrow, tmUpdate;
+    private Image fon, telo, golova, ob, endg;
+    private JLabel lb;
+    private JButton btn1, btn2;
+    private Panel pan;
 
     private class myKey implements KeyListener {
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            if (keyCode == KeyEvent.VK_KP_LEFT) myGame.new_napr = 0;
-            if (keyCode == KeyEvent.VK_KP_RIGHT) myGame.new_napr = 2;
-            if (keyCode == KeyEvent.VK_KP_UP) myGame.new_napr = 1;
-            if (keyCode == KeyEvent.VK_KP_DOWN) myGame.new_napr = 3;
+            if (keyCode == 37) myGame.new_napr = 0;
+            if (keyCode == 39) myGame.new_napr = 2;
+            if (keyCode == 38) myGame.new_napr = 1;
+            if (keyCode == 40) myGame.new_napr = 3;
         }
 
         public void keyReleased(KeyEvent e) {
@@ -61,7 +61,7 @@ public class Panel extends JPanel {
                 if (myGame.endg == false) {
                     myGame.perem();
                 }
-                lb.setText("Score: " + myGame.kol);
+                lb.setText("Score: " + myGame.score);
             }
         });
         tmUpdate.start();
@@ -80,6 +80,7 @@ public class Panel extends JPanel {
         btn1.setBounds(630, 30, 150, 50);
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                myGame = new Game();
                 myGame.start();
                 btn1.setFocusable(false);
                 btn2.setFocusable(false);
@@ -111,13 +112,13 @@ public class Panel extends JPanel {
                 if (myGame.mas[i][j] >= 2) gr.drawImage(telo, 10 + j * 20, 10 + i * 20, null);
                 gr.setColor(Color.ORANGE);
                 gr.setFont(new Font("arial", 0, 22));
-                gr.drawString("" + myGame.mas[i][j], 12 + j * 20, 30 + i * 20);
+                // gr.drawString("" + myGame.mas[i][j], 12 + j * 20, 30 + i * 20);
             }
         }
 
         gr.setColor(Color.BLUE);
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i <= 30; i++) {
             gr.drawLine(10 + i * 20, 10, 10 + i * 20, 610);
             gr.drawLine(10, 10 + i * 20, 610, 10 + i * 20);
         }

@@ -9,7 +9,7 @@ public class Frame extends JFrame {
         Container cont = getContentPane();
         cont.add(p);
         setTitle("Snake");
-        setBounds(0, 0, 800, 650);
+        setBounds(0, 0, 800, 660);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

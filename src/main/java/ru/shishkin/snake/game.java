@@ -1,27 +1,27 @@
 package ru.shishkin.snake;
 
 public class Game {
+    private int gX, gY;
+    private int dlina;
+    boolean endg;
+    int score;
+    int new_napr;
     int[][] mas;
     int napr;
-    int gX, gY;
-    int kol;
-    int new_napr;
-    int dlina;
-    boolean endg;
 
     public Game() {
         mas = new int[30][30];
-
     }
 
-    void povorot() {
+    private void povorot() {
         if (Math.abs(new_napr - napr) != 2) napr = new_napr;
     }
 
-    void make_new() {
+    private void make_new() {
         while (true) {
             int k = (int) (Math.random() * 30);
             int s = (int) (Math.random() * 30);
+
             if (mas[s][k] == 0) {
                 mas[s][k] = -1;
                 break;
@@ -37,7 +37,7 @@ public class Game {
         }
 
         napr = 0;
-        kol = 0;
+        score = 0;
         mas[14][14] = 1;
         mas[14][15] = 2;
         mas[14][16] = 3;
@@ -47,7 +47,7 @@ public class Game {
         make_new();
     }
 
-    int peremGoloa() {
+    private int peremGolova() {
         if (napr == 0) { //left
             if ((gX - 1) >= 0) gX--;
             else gX = 29;
@@ -67,9 +67,13 @@ public class Game {
 
         int rez = 0;
 
-        if (mas[gY][gX] == -1) rez = 1;
-        else if (mas[gY][gX] == 0) rez = 2;
-        else if (mas[gY][gX] > 0) rez = 3;
+        if (mas[gY][gX] == -1) {
+            rez = 1;
+        } else if (mas[gY][gX] == 0) {
+            rez = 2;
+        } else if (mas[gY][gX] > 0) {
+            rez = 3;
+        }
 
         mas[gY][gX] = -2;
 
@@ -77,14 +81,17 @@ public class Game {
     }
 
     void perem() {
-        int flag = peremGoloa();
+        int flag = peremGolova();
 
         if (flag == 3) endg = true;
 
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 30; j++) {
-                if (mas[i][j] > 0) mas[i][j]++;
-                else if (mas[i][j] == -2) mas[i][j] = 1;
+                if (mas[i][j] > 0) {
+                    mas[i][j]++;
+                } else if (mas[i][j] == -2) {
+                    mas[i][j] = 1;
+                }
 
                 if (flag != 1) {
                     if (mas[i][j] == (dlina + 1)) mas[i][j] = 0;
@@ -95,7 +102,7 @@ public class Game {
         if (flag == 1) {
             dlina++;
             make_new();
-            kol += 10;
+            score += 10;
         }
 
         povorot();
