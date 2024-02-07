@@ -1,4 +1,4 @@
-package ru.shishkin.snake;
+package ru.shishkin.maxim.snake;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package ru.shishkin.snake;
+package ru.shishkin.maxim.snake;
 
 public class Game {
     private int gX, gY;
